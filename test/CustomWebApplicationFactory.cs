@@ -29,6 +29,7 @@ namespace EfConfigurationProvider.Test
             var options = new DbContextOptionsBuilder { };
             options.UseSqlServer(cs);
             using var dbContext = new DataContext(options.Options);
+            //dbContext.Database.EnsureDeleted();
             dbContext.Database.Migrate();
 
             ConfigurationValue val = dbContext.Values.SingleOrDefault(v => v.Name == "cs");

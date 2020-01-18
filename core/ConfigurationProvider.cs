@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -40,6 +41,11 @@ namespace EfConfigurationProvider
             using var dbContext = new DataContext(builder.Options);
 
             Data = dbContext.Values.ToDictionary(c => c.Name, c => c.Value);
+        }
+
+        public IDictionary<string, string> GetData()
+        {
+            return Data;
         }
     }
 }

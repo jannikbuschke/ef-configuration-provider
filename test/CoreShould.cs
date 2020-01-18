@@ -3,9 +3,9 @@ using Xunit;
 
 namespace EfConfigurationProvider.Test
 {
-    public class Should : BaseIntegrationTestClass
+    public class CoreShould : BaseIntegrationTestClass
     {
-        public Should(CustomWebApplicationFactory<Startup> factory) : base(factory) { }
+        public CoreShould(CustomWebApplicationFactory<Startup> factory) : base(factory) { }
 
         [Fact]
         public void Have_Initial_Values()
@@ -53,4 +53,5 @@ namespace EfConfigurationProvider.Test
             Assert.Equal(value1, config.GetValue<string>(id1));
         }
     }
+
 }

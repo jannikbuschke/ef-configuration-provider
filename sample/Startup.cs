@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +18,9 @@ namespace EfConfigurationProvider
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(options =>
+            {
+            });
             services.AddEfConfiguration();
         }
 
@@ -27,6 +30,8 @@ namespace EfConfigurationProvider
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMvc();
 
             if (env.IsDevelopment())
             {
