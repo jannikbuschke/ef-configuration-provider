@@ -17,8 +17,8 @@ namespace EfConfigurationProvider.Test
         [Fact]
         public async void Insert_Values()
         {
-            (string id1, string value1) = ("Hello:World", "Hi");
-            (string id2, string value2) = ("ConnectionString", "Server:Secret");
+            (var id1, var value1) = ("Hello:World", "Hi");
+            (var id2, var value2) = ("ConnectionString", "Server:Secret");
 
             await Send(new Update
             {
@@ -37,7 +37,7 @@ namespace EfConfigurationProvider.Test
         [Fact]
         public async void Update_Value()
         {
-            (string id1, string value1) = ("key5", "foobar");
+            (var id1, var value1) = ("key5", "foobar");
             IConfiguration config = GetRequiredService<IConfiguration>();
             Assert.Equal("value5", config.GetValue<string>(id1));
 
