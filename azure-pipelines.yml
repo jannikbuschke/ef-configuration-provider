@@ -17,6 +17,7 @@ steps:
     includesource: true
 
 - task: NuGetCommand@2
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/release/*'))
   displayName: 'push'
   inputs:
     command: 'push'
