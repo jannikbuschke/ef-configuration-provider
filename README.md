@@ -5,7 +5,12 @@ This library allows to use a sql database table for configuration values in an A
 
 # Install
 
-A Nuget package is not yet available.
+https://www.nuget.org/packages/EfConfigurationProvider/
+
+
+```
+dotnet add package EfConfigurationProvider
+```
 
 # Configure
 
