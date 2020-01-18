@@ -1,10 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider</AssemblyName>
     <RootNamespace>EfConfigurationProvider</RootNamespace>
+    <Version>0.1.0</Version>
+    <Authors>Jannik Buschke</Authors>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
