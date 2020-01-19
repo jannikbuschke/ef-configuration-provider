@@ -15,9 +15,17 @@ steps:
     script: 'sqllocaldb start mssqllocaldb'
 
 - task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '*/**.csproj'
+    arguments: '-- configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
   displayName: 'test'
   inputs:
     command: 'test'
+    projects: 'test/test.csproj'
+    arguments: '-- configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'pack'
