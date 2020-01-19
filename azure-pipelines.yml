@@ -8,6 +8,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: 'sqllocaldb start mssqllocaldb'
 - task: DotNetCoreCLI@2
   displayName: 'test'
   inputs:
