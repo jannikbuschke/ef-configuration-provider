@@ -1,3 +1,5 @@
+using System;
+using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Xunit;
 
@@ -22,7 +24,7 @@ namespace EfConfigurationProvider.Test
 
             await Send(new Update
             {
-                UpsertValues = new System.Collections.Generic.List<ConfigurationValue>
+                Values = new[]
                 {
                     new ConfigurationValue { Name = id1, Value = value1 },
                     new ConfigurationValue { Name = id2, Value = value2 }
@@ -37,21 +39,39 @@ namespace EfConfigurationProvider.Test
         [Fact]
         public async void Update_Value()
         {
-            (var id1, var value1) = ("key5", "foobar");
+            (var id1, var value1) = ("key6", "foobar");
             IConfiguration config = GetRequiredService<IConfiguration>();
-            Assert.Equal("value5", config.GetValue<string>(id1));
+            Assert.Equal("value6", config.GetValue<string>(id1));
 
             await Send(new Update
             {
-                UpsertValues = new System.Collections.Generic.List<ConfigurationValue>
+                Values = new[]
                 {
-                    new ConfigurationValue { Name = id1, Value = value1 },
+                    new ConfigurationValue { Name = id1, Value = value1 }
                 }
             });
 
             config = GetRequiredService<IConfiguration>();
             Assert.Equal(value1, config.GetValue<string>(id1));
         }
-    }
 
+        [Fact]
+        public async void Throw_ValidationException_On_Duplicate_Upserts()
+        {
+            (var id1, var value1) = ("key10", "value10");
+
+            await Assert.ThrowsAsync<ValidationException>(async () =>
+            {
+                await Send(new Update
+                {
+                    Values = new[]
+                    {
+                        new ConfigurationValue { Name = id1, Value = value1 },
+                        new ConfigurationValue { Name = id1, Value = value1 },
+                    }
+                });
+            });
+
+        }
+    }
 }

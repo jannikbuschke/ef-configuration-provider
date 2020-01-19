@@ -1,9 +1,20 @@
-﻿namespace EfConfigurationProvider
+using System;
+
+namespace EfConfigurationProvider
 {
-    public class ConfigurationValue
+    public class ConfigurationValue : IEquatable<ConfigurationValue>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
+
+        public bool Equals(ConfigurationValue other)
+        {
+            return Name == other.Name;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
     }
 }

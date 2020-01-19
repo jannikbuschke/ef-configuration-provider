@@ -1,9 +1,10 @@
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace EfConfigurationProvider.Api
 {
@@ -23,17 +24,30 @@ namespace EfConfigurationProvider.Api
             this.mediator = mediator;
         }
 
-        [HttpGet("data")]
+        [HttpGet("values")]
         public IDictionary<string, string> Get()
         {
             return provider.GetData();
         }
 
+        [HttpGet("current")]
+        public Configuration GetCurrentConfiguration()
+        {
+            return provider.GetConfiguration();
+        }
+
         [HttpPost("update")]
         public async Task<ActionResult> Update(Update request)
         {
-            await mediator.Send(request);
-            return Ok();
+            try
+            {
+                await mediator.Send(request);
+                return Ok();
+            }
+            catch (ValidationException e)
+            {
+                return BadRequest(e.ToString());
+            }
         }
     }
 }

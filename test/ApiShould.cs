@@ -28,14 +28,15 @@ namespace EfConfigurationProvider.Test
             (var id1, var value1) = ("Hello:World123", "Hi123");
             (var id2, var value2) = ("ConnectionString123", "Server:Secret123");
 
-            HttpResponseMessage response = await client.PostAsJsonAsync("api/__configuration/update", new Update
-            {
-                UpsertValues = new List<ConfigurationValue>
+            HttpResponseMessage response = await client.PostAsJsonAsync("api/__configuration/update",
+                new Update
                 {
-                    new ConfigurationValue { Name = id1, Value = value1},
-                    new ConfigurationValue { Name = id2, Value = value2}
-                }
-            });
+                    Values = new []
+                    {
+                        new ConfigurationValue { Name = id1, Value = value1 },
+                        new ConfigurationValue { Name = id2, Value = value2 }
+                    }
+                });
             response.EnsureSuccessStatusCode();
 
             IConfiguration config = GetRequiredService<IConfiguration>();

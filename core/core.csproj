@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="EFCore.BulkExtensions" Version="2.6.4" />
+    <PackageReference Include="FluentValidation" Version="8.6.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="FlexLabs.EntityFrameworkCore.Upsert" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.1.0" />
@@ -23,10 +24,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="MediatR" Version="7.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

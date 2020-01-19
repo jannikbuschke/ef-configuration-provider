@@ -10,6 +10,7 @@ namespace EfConfigurationProvider
     public class ConfigurationProvider : Microsoft.Extensions.Configuration.ConfigurationProvider, IConfigurationProvider
     {
         public static ConfigurationProvider Value { private set; get; }
+        private Configuration Configuration { set; get; }
 
         public ConfigurationProvider(Action<DbContextOptionsBuilder> optionsAction)
         {
@@ -39,10 +40,14 @@ namespace EfConfigurationProvider
             OptionsAction(builder);
 
             using var dbContext = new DataContext(builder.Options);
-
-            Data = dbContext.Values.ToDictionary(c => c.Name, c => c.Value);
+            Configuration = dbContext.Configurations.OrderByDescending(v => v.Created).FirstOrDefault();
+            Data = Configuration != null ? Configuration.Values ?? new Dictionary<string, string>() : new Dictionary<string, string>();// dbContext.Values.ToDictionary(c => c.Name, c => c.Value);
         }
 
+        public Configuration GetConfiguration()
+        {
+            return Configuration;
+        }
         public IDictionary<string, string> GetData()
         {
             return Data;

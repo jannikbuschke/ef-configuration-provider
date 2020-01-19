@@ -1,5 +1,8 @@
-﻿using System.Threading;
+using System;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,12 +15,19 @@ namespace EfConfigurationProvider
             var builder = new DbContextOptionsBuilder<DataContext>();
             EntityFrameworkExtensions.optionsAction(builder);
             using var ctx = new DataContext(builder.Options);
-            //ctx.BulkInsertOrUpdate(request.UpsertValues);
-            ctx.Values
-                .UpsertRange(request.UpsertValues)
-                .On(v => v.Name)
-                //.WhenMatched(v => new ConfigurationValue { Value = v.Value })
-                .Run();
+
+            var validator = new UpdateValidator();
+            FluentValidation.Results.ValidationResult result = validator.Validate(request);
+            if (!result.IsValid)
+            {
+                throw new ValidationException(result.Errors);
+            }
+
+            ctx.Configurations.Add(new Configuration
+            {
+                Values = request.Values.ToDictionary(value => value.Name, v => v.Value),
+                Created = DateTime.UtcNow,
+            });
 
             await ctx.SaveChangesAsync();
             ConfigurationProvider.Value.Reload();

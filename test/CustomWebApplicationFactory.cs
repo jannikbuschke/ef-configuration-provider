@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -32,21 +32,17 @@ namespace EfConfigurationProvider.Test
             //dbContext.Database.EnsureDeleted();
             dbContext.Database.Migrate();
 
-            ConfigurationValue val = dbContext.Values.SingleOrDefault(v => v.Name == "cs");
-            if (val == null)
+            dbContext.Configurations.Add(new Configuration
             {
-                dbContext.Values.Add(new ConfigurationValue
+                Created = DateTime.UtcNow,
+                Values = new System.Collections.Generic.Dictionary<string, string>
                 {
-                    Name = "cs",
-                    Value = "value123"
-                });
-                dbContext.Values.Add(new ConfigurationValue
-                {
-                    Name = "key5",
-                    Value = "value5"
-                });
-                dbContext.SaveChanges();
-            }
+                    { "cs", "value123" },
+                    { "key5", "value5" },
+                    { "key6", "value6" },
+                }
+            });
+            dbContext.SaveChanges();
 
             builder.ConfigureAppConfiguration((context, conf) =>
             {
