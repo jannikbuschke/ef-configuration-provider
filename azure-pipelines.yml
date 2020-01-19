@@ -9,6 +9,17 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: './ui/web'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
+    workingDir: './ui/web'
+
 - task: PowerShell@2
   displayName: 'start mssqllocaldb'
   inputs:
