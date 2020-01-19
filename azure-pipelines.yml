@@ -22,7 +22,7 @@ steps:
   displayName: 'pack'
   inputs:
     command: 'pack'
-    packagesToPack: 'core/core.csproj'
+    packagesToPack: 'meta/meta.csproj'
     includesymbols: true
     includesource: true
 
