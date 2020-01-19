@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>EfConfigurationProvider</RootNamespace>
     <AssemblyName>EfConfigurationProviderTest</AssemblyName>
-  <LangVersion>8.0</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +28,5 @@
     <ProjectReference Include="..\core\core.csproj" />
     <ProjectReference Include="..\sample\sample.csproj" />
   </ItemGroup>
-
 
 </Project>

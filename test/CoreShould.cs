@@ -1,4 +1,3 @@
-using System;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Xunit;

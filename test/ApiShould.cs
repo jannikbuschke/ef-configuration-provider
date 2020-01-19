@@ -31,7 +31,7 @@ namespace EfConfigurationProvider.Test
             HttpResponseMessage response = await client.PostAsJsonAsync("api/__configuration/update",
                 new Update
                 {
-                    Values = new []
+                    Values = new[]
                     {
                         new ConfigurationValue { Name = id1, Value = value1 },
                         new ConfigurationValue { Name = id2, Value = value2 }
