@@ -13,10 +13,12 @@ namespace EfConfigurationProvider.Test
         [Fact]
         public async void Have_Initial_Values()
         {
-            HttpResponseMessage response = await client.GetAsync("api/__configuration/data");
+            HttpResponseMessage response = await client.GetAsync("api/__configuration/current");
+            response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
 
-            Dictionary<string, string> data = JObject.Parse(content).ToObject<Dictionary<string, string>>();
+            Configuration config = JObject.Parse(content).ToObject<Configuration>();
+            Dictionary<string, string> data = config.Values;
             Assert.NotNull(data);
             Assert.True(data.ContainsKey("cs"));
             Assert.Equal("value123", data["cs"]);
