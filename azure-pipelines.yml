@@ -11,7 +11,7 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'sqllocaldb start mssqllocaldb''
+    script: 'sqllocaldb start mssqllocaldb'
 
 - task: DotNetCoreCLI@2
   displayName: 'test'
