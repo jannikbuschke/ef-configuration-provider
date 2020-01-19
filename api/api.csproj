@@ -5,8 +5,6 @@
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider.Api</AssemblyName>
     <RootNamespace>EfConfigurationProvider.Api</RootNamespace>
-    <Version>0.1.0</Version>
-    <Authors>Jannik Buschke</Authors>
   </PropertyGroup>
 
   <ItemGroup>

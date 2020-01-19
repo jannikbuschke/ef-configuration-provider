@@ -5,8 +5,6 @@
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider.Ui</AssemblyName>
     <RootNamespace>EfConfigurationProvider.Ui</RootNamespace>
-    <Version>0.1.0</Version>
-    <Authors>Jannik Buschke</Authors>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
     <SpaRoot>web\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
