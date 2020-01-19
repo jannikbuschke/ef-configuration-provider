@@ -1,3 +1,4 @@
+using EfConfigurationProvider.Ui;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +23,7 @@ namespace EfConfigurationProvider
             {
             });
             services.AddEfConfiguration();
+            services.AddEfConfigurationUi();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -32,6 +34,7 @@ namespace EfConfigurationProvider
             }
 
             app.UseMvc();
+            app.UseEfConfigurationUi();
 
             if (env.IsDevelopment())
             {

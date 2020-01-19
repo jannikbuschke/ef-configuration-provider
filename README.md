@@ -32,6 +32,28 @@ in Startup.cs
 ```cs
 public void ConfigureServices(IServiceCollection services)
 {
+    services.AddMvc();
     services.AddEfConfiguration();
+    services.AddEfConfigurationUi();
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseMvc();
+    app.UseEfConfigurationUi(); // enables a ui served under  /__configuration/index.html
 }
 ```
+
+# Features / Roadmap
+
+ - :white_check_mark: Simple table based edit of all key/values
+ - :white_check_mark: Embedded frontend
+ - :white_check_mark: Save history
+ - :black_square_button: Allow rollbacks
+ - :black_square_button: Configurable authorization
+ - :black_square_button: Configurable routes (for frontend and backend)
