@@ -10,11 +10,13 @@ variables:
 
 steps:
 - task: Npm@1
+  displayName: 'npm install'
   inputs:
     command: 'install'
     workingDir: './ui/web'
 
 - task: Npm@1
+  displayName: 'npm run build'
   inputs:
     command: 'custom'
     customCommand: 'run build'
