@@ -29,20 +29,22 @@ steps:
     script: 'sqllocaldb start mssqllocaldb'
 
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
   inputs:
     command: 'build'
     projects: '*/**.csproj'
     arguments: '-- configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'test'
+  displayName: 'dotnet test'
   inputs:
     command: 'test'
     projects: 'test/test.csproj'
     arguments: '-- configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'pack'
+  displayName: 'dotnet pack'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/release/*'))
   inputs:
     command: 'pack'
     packagesToPack: 'meta/meta.csproj'
@@ -51,7 +53,7 @@ steps:
 
 - task: NuGetCommand@2
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/release/*'))
-  displayName: 'push'
+  displayName: 'nuget push'
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
