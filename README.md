@@ -52,8 +52,10 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 # Features / Roadmap
 
  - :white_check_mark: Simple table based edit of all key/values
+ - :white_check_mark: MS SQL provider
  - :white_check_mark: Embedded frontend
  - :white_check_mark: Save history
  - :black_square_button: Allow rollbacks
  - :black_square_button: Configurable authorization
  - :black_square_button: Configurable routes (for frontend and backend)
+ - :black_square_button: Postgresql, MySQL, SQLite provider
