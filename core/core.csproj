@@ -5,6 +5,8 @@
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider.Core</AssemblyName>
     <RootNamespace>EfConfigurationProvider</RootNamespace>
+    <Version>0.3.0</Version>
+    <Authors>Jannik Buschke</Authors>
   </PropertyGroup>
 
   <ItemGroup>

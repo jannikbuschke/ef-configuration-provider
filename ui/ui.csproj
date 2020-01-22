@@ -1,10 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider.Ui</AssemblyName>
     <RootNamespace>EfConfigurationProvider.Ui</RootNamespace>
+    <Version>0.3.0</Version>
+    <Authors>Jannik Buschke</Authors>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
     <SpaRoot>web\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>

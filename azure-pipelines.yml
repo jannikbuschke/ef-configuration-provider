@@ -47,7 +47,7 @@ steps:
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))
   inputs:
     command: 'pack'
-    packagesToPack: 'meta/meta.csproj'
+    packagesToPack: 'api/api.csproj;core/core.csproj;ui/ui.csproj'
     includesymbols: true
     includesource: true
 
