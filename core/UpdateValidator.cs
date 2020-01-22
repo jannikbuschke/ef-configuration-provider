@@ -1,7 +1,7 @@
-﻿using System.Linq;
+using System.Linq;
 using FluentValidation;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Core
 {
     public class UpdateValidator : AbstractValidator<Update>
     {

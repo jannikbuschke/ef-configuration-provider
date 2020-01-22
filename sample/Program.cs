@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore;
+using EfConfigurationProvider.Core;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Sample
 {
     public class Program
     {

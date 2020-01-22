@@ -4,9 +4,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Core
 {
-
     public class ConfigurationProvider : Microsoft.Extensions.Configuration.ConfigurationProvider, IConfigurationProvider
     {
         public static ConfigurationProvider Value { private set; get; }

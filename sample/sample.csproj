@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyName>EfConfigurationProviderSample</AssemblyName>
-    <RootNamespace>EfConfigurationProvider</RootNamespace>
+    <AssemblyName>EfConfigurationProvider.Sample</AssemblyName>
+    <RootNamespace>EfConfigurationProvider.Sample</RootNamespace>
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 

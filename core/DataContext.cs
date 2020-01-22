@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Core
 {
     public class Configuration
     {

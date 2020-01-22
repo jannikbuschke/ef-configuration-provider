@@ -1,4 +1,5 @@
-﻿using Xunit;
+using EfConfigurationProvider.Sample;
+using Xunit;
 
 namespace EfConfigurationProvider.Test
 {

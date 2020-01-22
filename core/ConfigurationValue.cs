@@ -1,6 +1,6 @@
 using System;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Core
 {
     public class ConfigurationValue : IEquatable<ConfigurationValue>
     {

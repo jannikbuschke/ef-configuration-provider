@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
+using EfConfigurationProvider.Core;
+using EfConfigurationProvider.Sample;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using Xunit;

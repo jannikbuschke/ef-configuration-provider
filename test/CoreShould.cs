@@ -1,3 +1,5 @@
+using EfConfigurationProvider.Core;
+using EfConfigurationProvider.Sample;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Xunit;

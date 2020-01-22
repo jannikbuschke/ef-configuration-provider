@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Core
 {
     public class Update : IRequest
     {
