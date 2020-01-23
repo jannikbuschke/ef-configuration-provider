@@ -9,13 +9,18 @@ https://www.nuget.org/packages/EfConfigurationProvider/
 
 
 ```
-dotnet add package EfConfigurationProvider
+dotnet add package EfConfigurationProvider.Core
+dotnet add package EfConfigurationProvider.Api
+dotnet add package EfConfigurationProvider.Ui
 ```
 
 # Configure
 
 in Program cs
 ```cs
+
+using EfConfigurationProvider.Core;
+
 public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 {
     return WebHost.CreateDefaultBuilder(args)
@@ -30,6 +35,10 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 in Startup.cs
 ```cs
+using EfConfigurationProvider.Core;
+using EfConfigurationProvider.Ui;
+
+
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
