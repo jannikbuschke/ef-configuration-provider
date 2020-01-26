@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Core
 {
     public static class EntityFrameworkExtensions
     {

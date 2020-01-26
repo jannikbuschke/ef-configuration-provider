@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Core
 {
     public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
     {

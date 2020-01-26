@@ -6,7 +6,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace EfConfigurationProvider
+namespace EfConfigurationProvider.Core
 {
     public class UpdateHandler : IRequestHandler<Update>
     {
