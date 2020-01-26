@@ -27,7 +27,7 @@ namespace EfConfigurationProvider.Api
             foreach (Type candidate in candidates)
             {
                 feature.Controllers.Add(
-                    typeof(GenericController<>).MakeGenericType(candidate).GetTypeInfo()
+                    typeof(PartialUpdateController<>).MakeGenericType(candidate).GetTypeInfo()
                 );
             }
         }

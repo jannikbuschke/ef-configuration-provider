@@ -6,11 +6,11 @@ using Microsoft.Extensions.Options;
 namespace EfConfigurationProvider.Api
 {
     [Route("api/config")]
-    public class GenericController<T> : ControllerBase where T : class, new()
+    public class PartialUpdateController<T> : ControllerBase where T : class, new()
     {
         private readonly IMediator mediator;
 
-        public GenericController(IMediator mediator)
+        public PartialUpdateController(IMediator mediator)
         {
             this.mediator = mediator;
         }
