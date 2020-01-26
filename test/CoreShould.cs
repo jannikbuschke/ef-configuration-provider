@@ -70,6 +70,24 @@ namespace EfConfigurationProvider.Test
                     }
                 });
             });
+        }
+
+        [Fact]
+        public async void Partial_Update()
+        {
+            (var id1, var value1) = ("key11", "value11");
+
+            await Send(new PartialUpdate
+            {
+                Path = "paath",
+                Values = new[]
+                    {
+                        new ConfigurationValue { Name = id1, Value = value1 },
+                    }
+            });
+
+            IConfiguration config = GetRequiredService<IConfiguration>();
+            Assert.Equal(value1, config.GetValue<string>("paath:" + id1));
 
         }
     }

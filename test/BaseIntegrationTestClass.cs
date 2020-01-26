@@ -1,9 +1,11 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
@@ -18,7 +20,18 @@ namespace EfConfigurationProvider.Test
 
         public BaseIntegrationTestClass(WebApplicationFactory<Startup> factory)
         {
-            this.factory = factory;
+            this.factory = factory.WithWebHostBuilder(hostBuilder =>
+            {
+                hostBuilder.ConfigureAppConfiguration((ctx, options) =>
+                {
+                    options.AddInMemoryCollection(new[]
+                    {
+                        new KeyValuePair<string,string>("strongly-typed-options:value1", "123"),
+                        new KeyValuePair<string,string>("strongly-typed-options:flag", "true"),
+                        new KeyValuePair<string,string>("strongly-typed-options:value3", "hello world"),
+                    });
+                });
+            });
             client = this.factory.CreateClient();
             scope = this.factory.Server.Host.Services.CreateScope();
         }
