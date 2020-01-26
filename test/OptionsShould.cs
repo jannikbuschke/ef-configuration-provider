@@ -1,4 +1,5 @@
 using System.Net.Http;
+using EfConfigurationProvider.Sample;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Xunit;

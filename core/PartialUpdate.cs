@@ -1,4 +1,5 @@
-﻿using MediatR;
+using EfConfigurationProvider.Core;
+using MediatR;
 
 namespace EfConfigurationProvider
 {
