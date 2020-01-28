@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ui", "ui\ui.csproj", "{25CD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "meta", "meta\meta.csproj", "{29A39247-5297-43AF-BA75-0FEA46C1D051}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "core.sqlserver", "core.sqlserver\core.sqlserver.csproj", "{4658DB44-BDB6-4F94-B547-87645438125D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "core.sqlite", "core.sqlite\core.sqlite.csproj", "{FD846E2E-9058-44CF-B15B-B81CD6ABE9E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{29A39247-5297-43AF-BA75-0FEA46C1D051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29A39247-5297-43AF-BA75-0FEA46C1D051}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29A39247-5297-43AF-BA75-0FEA46C1D051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4658DB44-BDB6-4F94-B547-87645438125D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4658DB44-BDB6-4F94-B547-87645438125D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4658DB44-BDB6-4F94-B547-87645438125D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4658DB44-BDB6-4F94-B547-87645438125D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD846E2E-9058-44CF-B15B-B81CD6ABE9E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD846E2E-9058-44CF-B15B-B81CD6ABE9E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD846E2E-9058-44CF-B15B-B81CD6ABE9E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD846E2E-9058-44CF-B15B-B81CD6ABE9E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

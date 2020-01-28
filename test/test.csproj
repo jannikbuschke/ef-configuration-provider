@@ -26,6 +26,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\core\core.csproj" />
+    <ProjectReference Include="..\core.sqlserver\core.sqlserver.csproj" />
+    <ProjectReference Include="..\core.sqlite\core.sqlite.csproj" />
     <ProjectReference Include="..\sample\sample.csproj" />
   </ItemGroup>
 

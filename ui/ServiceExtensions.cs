@@ -7,7 +7,7 @@ using Microsoft.Extensions.FileProviders;
 
 namespace EfConfigurationProvider.Ui
 {
-    public static class Extensions
+    public static class ServiceExtensions
     {
         public static IServiceCollection AddEfConfigurationUi(this IServiceCollection services, IEnumerable<Assembly> assembliesToScan)
         {
@@ -29,7 +29,7 @@ namespace EfConfigurationProvider.Ui
             {
                 RequestPath = "/__configuration",
                 FileProvider = new ManifestEmbeddedFileProvider(
-                    assembly: Assembly.GetAssembly(typeof(Extensions)), "web/build")
+                    assembly: Assembly.GetAssembly(typeof(ServiceExtensions)), "web/build")
             });
         }
     }

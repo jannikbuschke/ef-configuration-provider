@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace EfConfigurationProvider
 {
-    public static class Extension
+    public static class PartialUpdateRawExtension
     {
         public static PartialUpdate ToPartialUpdate<T>(this PartialUpdateRaw<T> value)
         {

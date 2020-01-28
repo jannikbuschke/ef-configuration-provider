@@ -47,7 +47,7 @@ steps:
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))
   inputs:
     command: 'pack'
-    packagesToPack: 'api/api.csproj;core/core.csproj;ui/ui.csproj'
+    packagesToPack: 'api/api.csproj;core/core.csproj;ui/ui.csproj;core.sqlite/core.sqlite.csproj;core.sqlserver/core.sqlserver.csproj'
     includesymbols: true
     includesource: true
 

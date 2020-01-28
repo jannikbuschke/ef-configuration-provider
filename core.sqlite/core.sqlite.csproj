@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <AssemblyName>EfConfigurationProvider.Core.Sqlite</AssemblyName>
+    <RootNamespace>EfConfigurationProvider.Core.Sqlite</RootNamespace>
+    <Version>0.5.0</Version>
+    <Authors>Jannik Buschke</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\core\core.csproj" />
+  </ItemGroup>
+
+</Project>

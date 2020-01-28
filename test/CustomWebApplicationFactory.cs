@@ -27,7 +27,14 @@ namespace EfConfigurationProvider.Test
             }
             var cs = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=config-test;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var options = new DbContextOptionsBuilder { };
-            options.UseSqlServer(cs);
+            options.UseSqlServer(cs, options =>
+            {
+                options.MigrationsAssembly("EfConfigurationProvider.Core.SqlServer");
+            });
+            //options.UseSqlite("Data Source=test.sqlite", options =>
+            //{
+            //    options.MigrationsAssembly("EfConfigurationProvider.Core.Sqlite");
+            //});
             using var dbContext = new DataContext(options.Options);
             //dbContext.Database.EnsureDeleted();
             dbContext.Database.Migrate();

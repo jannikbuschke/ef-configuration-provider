@@ -12,6 +12,10 @@ https://www.nuget.org/packages/EfConfigurationProvider/
 dotnet add package EfConfigurationProvider.Core
 dotnet add package EfConfigurationProvider.Api
 dotnet add package EfConfigurationProvider.Ui
+
+// add one of the following database providers
+dotnet add package EfConfigurationProvider.Core.SqlServer
+dotnet add package EfConfigurationProvider.Core.Sqlite
 ```
 
 # Configure
@@ -26,8 +30,21 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
     return WebHost.CreateDefaultBuilder(args)
         .ConfigureAppConfiguration((context, conf) =>
         {
+            // depending on the database you want to use, use one of the following configurations
+
+            // SQL Server
             var cs = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=config-test;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            conf.AddEFConfiguration(options => options.UseSqlServer(cs));
+            conf.AddEFConfiguration(options => options.UseSqlServer(cs, options =>
+            {
+                options.MigrationsAssembly("EfConfigurationProvider.Core.SqlServer");
+            }));
+
+            // SQLite
+            var cs = "Data Source=sample.sqlite";
+            conf.AddEFConfiguration(options => options.UseSqlite(cs, options =>
+            {
+                options.MigrationsAssembly("EfConfigurationProvider.Core.Sqlite");
+            }));
         })
         .UseStartup<Startup>();
 }

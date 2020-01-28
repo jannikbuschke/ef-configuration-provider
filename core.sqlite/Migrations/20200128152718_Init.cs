@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EfConfigurationProvider.Migrations
+namespace EfConfigurationProvider.Core.Sqlite.Migrations
 {
     public partial class Init : Migration
     {
@@ -13,7 +12,7 @@ namespace EfConfigurationProvider.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Values = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     User = table.Column<string>(nullable: true)

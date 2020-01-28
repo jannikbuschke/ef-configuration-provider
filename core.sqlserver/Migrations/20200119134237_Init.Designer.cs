@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EfConfigurationProvider.Migrations
+namespace EfConfigurationProvider.Core.SqlServerMigrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20200119134237_Init")]
