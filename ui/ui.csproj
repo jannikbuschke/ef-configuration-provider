@@ -5,7 +5,7 @@
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider.Ui</AssemblyName>
     <RootNamespace>EfConfigurationProvider.Ui</RootNamespace>
-    <Version>0.4.1</Version>
+    <Version>0.5.0</Version>
     <Authors>Jannik Buschke</Authors>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
     <SpaRoot>web\</SpaRoot>
