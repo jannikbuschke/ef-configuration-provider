@@ -18,8 +18,6 @@ namespace EfConfigurationProvider.Api
 
         public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
         {
-            //Assembly currentAssembly = typeof(GenericTypeControllerFeatureProvider).Assembly;
-            //currentAssembly.GetExportedTypes().Where(v=>v.GetCustomAttributes()
             IEnumerable<Type> candidates = currentAssembly
                 .GetExportedTypes()
                 .Where(x => x.GetCustomAttributes(typeof(GeneratedControllerAttribute), true).Any());
