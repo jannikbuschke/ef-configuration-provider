@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Reflection;
+using EfConfigurationProvider.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -7,12 +9,16 @@ namespace EfConfigurationProvider.Ui
 {
     public static class Extensions
     {
-        public static IServiceCollection AddEfConfigurationUi(this IServiceCollection services)
+        public static IServiceCollection AddEfConfigurationUi(this IServiceCollection services, IEnumerable<Assembly> assembliesToScan)
         {
-            services.AddSpaStaticFiles(configuration =>
+            services.AddMvcCore(options =>
             {
-                configuration.RootPath = "web/build";
-            });
+                options.Conventions.Add(new GenericControllerRouteConvention());
+            }).ConfigureApplicationPartManager(m =>
+                m.FeatureProviders.Add(new GenericTypeControllerFeatureProvider(assembliesToScan)
+            ));
+            services.AddSingleton(new AssembliesCache(assembliesToScan));
+
             services.AddDirectoryBrowser();
             return services;
         }

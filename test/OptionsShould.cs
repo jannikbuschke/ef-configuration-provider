@@ -11,7 +11,7 @@ namespace EfConfigurationProvider.Test
         public OptionsShould(CustomWebApplicationFactory<Startup> factory) : base(factory) { }
 
         [Fact]
-        public async void Read_StronglyTypedOption()
+        public void Read_StronglyTypedOption()
         {
             IConfiguration configuration = GetRequiredService<IConfiguration>();
             var value1 = configuration.GetValue<int>("strongly-typed-options:value1");

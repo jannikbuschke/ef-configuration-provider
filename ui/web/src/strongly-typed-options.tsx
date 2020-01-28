@@ -1,20 +1,20 @@
 import * as React from 'react';
 import useSWR from 'swr';
 import { Formik } from 'formik';
-import { message, Alert, PageHeader, Divider, Button } from 'antd';
+import { message, Alert, PageHeader, Divider } from 'antd';
 import { Input, Switch, InputNumber, SubmitButton, Form } from 'formik-antd';
 import { useActions, badRequestResponseToFormikErrors } from './validation';
 
 function toType(type: string, name: string) {
   switch (type) {
     case 'string':
-      return <Input name={name} />;
+      return <Input fast={true} name={name} />;
     case 'number':
-      return <InputNumber name={name} />;
+      return <InputNumber fast={true} name={name} />;
     case 'boolean':
-      return <Switch name={name} />;
+      return <Switch fast={true} name={name} />;
     default:
-      return <Input name={name} />;
+      return <Input fast={true} name={name} />;
   }
 }
 

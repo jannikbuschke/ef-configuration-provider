@@ -26,6 +26,10 @@
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\api\api.csproj" />
+  </ItemGroup>
+
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)build\**; $(SpaRoot)build-ssr\**" />

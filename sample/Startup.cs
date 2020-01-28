@@ -22,15 +22,9 @@ namespace EfConfigurationProvider.Sample
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options =>
-            {
-                options.Conventions.Add(new GenericControllerRouteConvention());
-            }).ConfigureApplicationPartManager(m =>
-                m.FeatureProviders.Add(new GenericTypeControllerFeatureProvider(GetType().Assembly)
-            ));
-            services.AddSingleton(new AssembliesCache(new[] { GetType().Assembly }));
+            services.AddMvc();
             services.AddEfConfiguration();
-            services.AddEfConfigurationUi();
+            services.AddEfConfigurationUi(new[] { GetType().Assembly });
 
             services.Configure<StronglyTypedOptions>(configuration.GetSection("strongly-typed-options"));
             services.Configure<StronglyTypedOptions2>(configuration.GetSection("strongly-typed-options-2"));

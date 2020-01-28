@@ -12,9 +12,9 @@ namespace EfConfigurationProvider.Api
     {
         public IEnumerable<Assembly> Assemblies { get; private set; }
 
-        public AssembliesCache(Assembly[] assemblies)
+        public AssembliesCache(IEnumerable<Assembly> assemblies)
         {
-            Assemblies = assemblies;
+            Assemblies = assemblies ?? throw new ArgumentNullException(nameof(assemblies));
         }
 
         public IEnumerator<Assembly> GetEnumerator()
@@ -30,18 +30,18 @@ namespace EfConfigurationProvider.Api
 
     public class GenericTypeControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>
     {
-        private readonly Assembly currentAssembly;
+        private readonly IEnumerable<Assembly> assemblies;
 
-        public GenericTypeControllerFeatureProvider(Assembly assembly)
+        public GenericTypeControllerFeatureProvider(IEnumerable<Assembly> assemblies)
         {
-            currentAssembly = assembly;
+            this.assemblies = assemblies;
         }
 
         public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
         {
-            IEnumerable<Type> candidates = currentAssembly
-                .GetExportedTypes()
-                .Where(x => x.GetCustomAttributes(typeof(GeneratedControllerAttribute), true).Any());
+            IEnumerable<Type> candidates = assemblies
+                .SelectMany(v => v.GetExportedTypes()
+                .Where(x => x.GetCustomAttributes(typeof(GeneratedControllerAttribute), true).Any()));
 
             foreach (Type candidate in candidates)
             {

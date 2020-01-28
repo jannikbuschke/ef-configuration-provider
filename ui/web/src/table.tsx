@@ -141,6 +141,7 @@ export function DataTable() {
                 key: 'name',
                 render: (text, record, i) => (
                   <Input
+                    fast={true}
                     style={{ border: 'none', background: 'transparent' }}
                     name={`tableData.${i}.name`}
                   />
@@ -151,6 +152,7 @@ export function DataTable() {
                 key: 'value',
                 render: (text, record, i) => (
                   <Input
+                    fast={true}
                     style={{ border: 'none', background: 'transparent' }}
                     name={`tableData.${i}.value`}
                   />
