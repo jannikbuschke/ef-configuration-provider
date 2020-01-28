@@ -28,6 +28,7 @@ namespace EfConfigurationProvider.Sample
             }).ConfigureApplicationPartManager(m =>
                 m.FeatureProviders.Add(new GenericTypeControllerFeatureProvider(GetType().Assembly)
             ));
+            services.AddSingleton(new AssembliesCache(new[] { GetType().Assembly }));
             services.AddEfConfiguration();
             services.AddEfConfigurationUi();
 

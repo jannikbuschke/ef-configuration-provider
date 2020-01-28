@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -7,6 +8,26 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace EfConfigurationProvider.Api
 {
+    public class AssembliesCache : IEnumerable<Assembly>
+    {
+        public IEnumerable<Assembly> Assemblies { get; private set; }
+
+        public AssembliesCache(Assembly[] assemblies)
+        {
+            Assemblies = assemblies;
+        }
+
+        public IEnumerator<Assembly> GetEnumerator()
+        {
+            return Assemblies.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Assemblies.GetEnumerator();
+        }
+    }
+
     public class GenericTypeControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>
     {
         private readonly Assembly currentAssembly;

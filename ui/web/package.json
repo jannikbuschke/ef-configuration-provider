@@ -4,22 +4,27 @@
   "private": true,
   "dependencies": {
     "@zeit/swr": "0.1.2",
+    "swr": "0.1.16",
     "antd": "3.26.7",
     "formik": "2.1.2",
     "formik-antd": "1.8.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-scripts": "3.3.0",
-    "dayjs": "1.8.19"
+    "dayjs": "1.8.19",
+    "react-router-dom": "5.1.2",
+    "lodash": "4.17.15"
   },
   "devDependencies": {
+    "@types/react-router-dom": "5.1.3",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.4.0",
     "@testing-library/user-event": "7.2.1",
     "typescript": "3.7.5",
     "prettier": "1.19.1",
     "@types/react": "16.9.5",
-    "@types/react-dom": "16.9.1"
+    "@types/react-dom": "16.9.1",
+    "@types/lodash": "4.14.149"
   },
   "scripts": {
     "start": "react-scripts start",

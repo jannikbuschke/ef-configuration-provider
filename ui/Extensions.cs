@@ -19,10 +19,9 @@ namespace EfConfigurationProvider.Ui
 
         public static void UseEfConfigurationUi(this IApplicationBuilder app)
         {
-            app.UseStaticFiles(new StaticFileOptions
+            app.UseFileServer(new FileServerOptions
             {
                 RequestPath = "/__configuration",
-
                 FileProvider = new ManifestEmbeddedFileProvider(
                     assembly: Assembly.GetAssembly(typeof(Extensions)), "web/build")
             });

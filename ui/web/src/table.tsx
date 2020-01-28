@@ -75,7 +75,7 @@ export function DataTable() {
     );
   }, [data]);
   return (
-    <div>
+    <div style={{ background: '#fff', padding: 24 }}>
       <div>{error && <Alert type="error" message={error} />}</div>
       <div>{postError && <Alert type="error" message={postError} />}</div>
       <Formik<{ tableData: ConfigurationValue[] }>
@@ -98,7 +98,7 @@ export function DataTable() {
         }}>
         <Form>
           <PageHeader
-            title="Configuration"
+            title="All"
             subTitle={
               <Tooltip title="last edited">
                 {dayjs(data.created).toString()}
@@ -106,6 +106,7 @@ export function DataTable() {
             }
             extra={[
               <AddRowButton
+                size="small"
                 key={1}
                 name="tableData"
                 style={{ marginBottom: 20 }}
@@ -115,18 +116,23 @@ export function DataTable() {
                 })}>
                 Add
               </AddRowButton>,
-              <Button key={2} icon="reload" onClick={() => reload()}>
+              <Button
+                size="small"
+                key={2}
+                icon="reload"
+                onClick={() => reload()}>
                 refresh
               </Button>,
-              <SubmitButton key={3}>save</SubmitButton>,
+              <SubmitButton size="small" key={3}>
+                save
+              </SubmitButton>,
             ]}></PageHeader>
 
           <Table
             loading={loading}
             name="tableData"
             rowKey={(row, index) => '' + index}
-            style={{}}
-            size="small"
+            size="middle"
             pagination={false}
             columns={[
               {
@@ -135,7 +141,7 @@ export function DataTable() {
                 key: 'name',
                 render: (text, record, i) => (
                   <Input
-                    style={{ border: 'none' }}
+                    style={{ border: 'none', background: 'transparent' }}
                     name={`tableData.${i}.name`}
                   />
                 ),
@@ -145,7 +151,7 @@ export function DataTable() {
                 key: 'value',
                 render: (text, record, i) => (
                   <Input
-                    style={{ border: 'none' }}
+                    style={{ border: 'none', background: 'transparent' }}
                     name={`tableData.${i}.value`}
                   />
                 ),
@@ -156,7 +162,7 @@ export function DataTable() {
                 align: 'right',
                 render: (text, record, index) => (
                   <RemoveRowButton
-                    style={{ border: 'none' }}
+                    style={{ border: 'none', background: 'transparent' }}
                     icon="delete"
                     name="tableData"
                     index={index}
