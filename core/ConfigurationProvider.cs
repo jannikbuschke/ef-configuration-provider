@@ -39,8 +39,11 @@ namespace EfConfigurationProvider.Core
             OptionsAction(builder);
 
             using var dbContext = new DataContext(builder.Options);
-            Configuration = dbContext.Configurations.OrderByDescending(v => v.Created).FirstOrDefault();
-            Data = Configuration != null ? Configuration.Values ?? new Dictionary<string, string>() : new Dictionary<string, string>();// dbContext.Values.ToDictionary(c => c.Name, c => c.Value);
+            Configuration = dbContext
+                .Configurations
+                .OrderByDescending(v => v.Created)
+                .FirstOrDefault() ?? new Configuration { Values = new Dictionary<string, string>() };
+            Data = Configuration.Values;
         }
 
         public Configuration GetConfiguration()
