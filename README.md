@@ -60,7 +60,10 @@ public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
     services.AddEfConfiguration();
-    services.AddEfConfigurationUi();
+    services.AddEfConfigurationUi(new[] { GetType().Assembly });
+
+    // if you are using strongly typed options, configure them in Startup.cs as usual
+    services.Configure<MyStronglyTypedOptions>(configuration.GetSection("myoptions"));
 }
 
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -75,13 +78,28 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
+To enable configuration and validation support for strongly typed options, provide the `GeneratedController` attribute to your class:
+
+```cs
+[GeneratedController("some-unique-id", Title = "My Options")]
+public class MyStronglyTypedOptions
+{
+    [Required]
+    public int Value1 { get; set; }
+    public bool Flag { get; set; }
+    [EmailAddress]
+    public string Email { get; set; }
+}
+```
+
 # Features / Roadmap
 
  - :white_check_mark: Simple table based edit of all key/values
  - :white_check_mark: MS SQL provider
+ - :white_check_mark: SQLite provider
  - :white_check_mark: Embedded frontend
  - :white_check_mark: Save history
  - :black_square_button: Allow rollbacks
  - :black_square_button: Configurable authorization
  - :black_square_button: Configurable routes (for frontend and backend)
- - :black_square_button: Postgresql, MySQL, SQLite provider
+ - :black_square_button: Postgresql, MySQL provider
