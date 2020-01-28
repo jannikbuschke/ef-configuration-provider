@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\core\core.csproj" />
     <ProjectReference Include="..\core.sqlserver\core.sqlserver.csproj" />
     <ProjectReference Include="..\core.sqlite\core.sqlite.csproj" />

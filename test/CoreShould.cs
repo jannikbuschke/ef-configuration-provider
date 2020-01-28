@@ -14,7 +14,7 @@ namespace EfConfigurationProvider.Test
         public void Have_Initial_Values()
         {
             IConfiguration config = GetRequiredService<IConfiguration>();
-            Assert.Equal("value123", config.GetValue<string>("cs"));
+            Assert.Equal("value2", config.GetValue<string>("key2"));
         }
 
         [Fact]
@@ -90,7 +90,6 @@ namespace EfConfigurationProvider.Test
 
             IConfiguration config = GetRequiredService<IConfiguration>();
             Assert.Equal(value1, config.GetValue<string>("paath:" + id1));
-
         }
     }
 }

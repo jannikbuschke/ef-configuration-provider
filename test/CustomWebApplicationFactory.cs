@@ -44,7 +44,10 @@ namespace EfConfigurationProvider.Test
                 Created = DateTime.UtcNow,
                 Values = new System.Collections.Generic.Dictionary<string, string>
                 {
-                    { "cs", "value123" },
+                    { "key1", "value1" },
+                    { "key2", "value2" },
+                    { "key3", "value3" },
+                    { "key4", "value4" },
                     { "key5", "value5" },
                     { "key6", "value6" },
                 }
@@ -53,7 +56,13 @@ namespace EfConfigurationProvider.Test
 
             builder.ConfigureAppConfiguration((context, conf) =>
             {
-                conf.AddEFConfiguration(options => options.UseSqlServer(cs));
+                conf.AddEFConfiguration(options =>
+                {
+                    options.UseSqlServer(cs, options =>
+                    {
+                        options.MigrationsAssembly("EfConfigurationProvider.Core.SqlServer");
+                    });
+                });
             });
         }
     }

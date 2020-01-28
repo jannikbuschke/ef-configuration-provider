@@ -22,8 +22,8 @@ namespace EfConfigurationProvider.Test
             Configuration config = JObject.Parse(content).ToObject<Configuration>();
             Dictionary<string, string> data = config.Values;
             Assert.NotNull(data);
-            Assert.True(data.ContainsKey("cs"));
-            Assert.Equal("value123", data["cs"]);
+            Assert.True(data.ContainsKey("key1"));
+            Assert.Equal("value1", data["key1"]);
         }
 
         [Fact]
