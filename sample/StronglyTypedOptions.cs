@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using EfConfigurationProvider.Api;
+using EfConfigurationProvider.Core;
 
 namespace EfConfigurationProvider
 {

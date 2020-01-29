@@ -1,6 +1,6 @@
 using System;
 
-namespace EfConfigurationProvider.Api
+namespace EfConfigurationProvider.Core
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class GeneratedControllerAttribute : Attribute

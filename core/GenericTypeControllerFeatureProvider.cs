@@ -6,7 +6,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
-namespace EfConfigurationProvider.Api
+namespace EfConfigurationProvider.Core
 {
     public class AssembliesCache : IEnumerable<Assembly>
     {

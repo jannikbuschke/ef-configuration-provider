@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using EfConfigurationProvider.Api;
+using EfConfigurationProvider.Core;
 using EfConfigurationProvider.Core;
 using EfConfigurationProvider.Ui;
 using Microsoft.AspNetCore.Builder;

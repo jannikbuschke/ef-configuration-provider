@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Threading.Tasks;
-using EfConfigurationProvider.Api;
+using EfConfigurationProvider.Core;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 

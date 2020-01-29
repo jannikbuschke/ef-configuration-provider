@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\core\core.csproj" />
-    <ProjectReference Include="..\api\api.csproj" />
     <ProjectReference Include="..\ui\ui.csproj" />
     <ProjectReference Include="..\core.sqlite\core.sqlite.csproj" />
     <ProjectReference Include="..\core.sqlserver\core.sqlserver.csproj" />

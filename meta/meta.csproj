@@ -13,8 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\core\core.csproj" PrivateAssets="all">
     </ProjectReference>
-    <ProjectReference Include="..\api\api.csproj" PrivateAssets="all">
-    </ProjectReference>
     <ProjectReference Include="..\ui\ui.csproj" PrivateAssets="all">
     </ProjectReference>
   </ItemGroup>

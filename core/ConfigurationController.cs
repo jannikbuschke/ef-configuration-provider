@@ -2,15 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using EfConfigurationProvider.Core;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using ConfigurationProvider = EfConfigurationProvider.Core.ConfigurationProvider;
 
-namespace EfConfigurationProvider.Api
+namespace EfConfigurationProvider.Core
 {
 
     [Route("api/__configuration")]
