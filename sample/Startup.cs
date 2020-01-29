@@ -22,8 +22,18 @@ namespace EfConfigurationProvider.Sample
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("policy", policy =>
+                {
+                    policy.RequireRole("Everyone");
+                });
+            });
             services.AddMvc();
-            services.AddEfConfiguration();
+            services.AddEfConfiguration(options=>
+            {
+                //options.GlobalPolicy = "policy";
+            });
             services.AddEfConfigurationUi(new[] { GetType().Assembly });
 
             services.Configure<StronglyTypedOptions>(configuration.GetSection("strongly-typed-options"));

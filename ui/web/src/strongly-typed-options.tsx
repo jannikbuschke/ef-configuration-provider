@@ -23,16 +23,10 @@ interface Props {
   path: string;
 }
 
-export async function getJson(key: string) {
-  const r = await fetch(key);
-  const data = await r.json();
-  return data;
-}
-
 export function StronglyTypedOptions({ path, title }: Props) {
   const url = `/${path}`;
   const { submit } = useActions(url);
-  const { data, error, revalidate } = useSWR(url, getJson);
+  const { data, error, revalidate } = useSWR(url);
 
   return (
     <div style={{ maxWidth: 1200, background: '#fff' }}>
