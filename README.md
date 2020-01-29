@@ -10,7 +10,6 @@ https://www.nuget.org/packages/EfConfigurationProvider/
 
 ```
 dotnet add package EfConfigurationProvider.Core
-dotnet add package EfConfigurationProvider.Api
 dotnet add package EfConfigurationProvider.Ui
 
 // add one of the following database providers
@@ -24,13 +23,15 @@ in Program cs
 ```cs
 
 using EfConfigurationProvider.Core;
+using EfConfigurationProvider.Core.SqlServer;
+using EfConfigurationProvider.Core.Sqlite;
 
 public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 {
     return WebHost.CreateDefaultBuilder(args)
         .ConfigureAppConfiguration((context, conf) =>
         {
-            // depending on the database you want to use, use one of the following configurations
+            // depending on the database you want to use, pick one of the following configurations
 
             // SQL Server
             var cs = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=config-test;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
