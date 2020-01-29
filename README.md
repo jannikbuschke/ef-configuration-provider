@@ -58,8 +58,18 @@ using EfConfigurationProvider.Ui;
 
 public void ConfigureServices(IServiceCollection services)
 {
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("admin", policy =>
+        {
+            policy.RequireRole("admin");
+        });
+    });
     services.AddMvc();
-    services.AddEfConfiguration();
+    services.AddEfConfiguration(options =>
+    {
+        options.GlobalPolicy = "admin";
+    });
     services.AddEfConfigurationUi(new[] { GetType().Assembly });
 
     // if you are using strongly typed options, configure them in Startup.cs as usual
@@ -98,8 +108,8 @@ public class MyStronglyTypedOptions
  - :white_check_mark: MS SQL provider
  - :white_check_mark: SQLite provider
  - :white_check_mark: Embedded frontend
+ - :white_check_mark: Configurable authorization
  - :white_check_mark: Save history
  - :black_square_button: Allow rollbacks
- - :black_square_button: Configurable authorization
  - :black_square_button: Configurable routes (for frontend and backend)
  - :black_square_button: Postgresql, MySQL provider
