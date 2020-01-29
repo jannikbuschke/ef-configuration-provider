@@ -13,7 +13,7 @@ namespace EfConfigurationProvider
         public string Value3 { get; set; }
     }
 
-    [GeneratedController("strongly-typed-options-2", Title="Options Two")]
+    [GeneratedController("strongly-typed-options-2", Title = "Options Two")]
     public class StronglyTypedOptions2
     {
         [Required]
@@ -23,7 +23,7 @@ namespace EfConfigurationProvider
         public string Value3 { get; set; }
     }
 
-    [GeneratedController("mails",Title ="Mails")]
+    [GeneratedController("mails", Title = "Mails")]
     public class MailsOptions
     {
         public string Foo { get; set; }

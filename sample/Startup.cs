@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using EfConfigurationProvider.Core;
-using EfConfigurationProvider.Core;
 using EfConfigurationProvider.Ui;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +29,7 @@ namespace EfConfigurationProvider.Sample
                 });
             });
             services.AddMvc();
-            services.AddEfConfiguration(options=>
+            services.AddEfConfiguration(options =>
             {
                 //options.GlobalPolicy = "policy";
             });
