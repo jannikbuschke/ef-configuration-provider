@@ -30,15 +30,4 @@
     <ProjectReference Include="..\api\api.csproj" />
   </ItemGroup>
 
-  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
-    <ItemGroup>
-      <DistFiles Include="$(SpaRoot)build\**; $(SpaRoot)build-ssr\**" />
-      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
-        <RelativePath>%(DistFiles.Identity)</RelativePath>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      </ResolvedFileToPublish>
-    </ItemGroup>
-  </Target>
-
-
 </Project>

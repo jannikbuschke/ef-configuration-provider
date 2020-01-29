@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading.Tasks;
 using EfConfigurationProvider.Api;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 
@@ -19,7 +22,6 @@ namespace EfConfigurationProvider.Ui
             ));
             services.AddSingleton(new AssembliesCache(assembliesToScan));
 
-            services.AddDirectoryBrowser();
             return services;
         }
 
