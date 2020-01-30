@@ -31,7 +31,7 @@ namespace EfConfigurationProvider.Test
         [Fact]
         public async void Update_StronglyTypedOption()
         {
-            HttpResponseMessage postResponse = await client.PostAsJsonAsync("/strongly-typed-options-2",
+            HttpResponseMessage postResponse = await client.PostAsJsonAsync("/api/__configuration/strongly-typed-options-2",
                 new PartialUpdateRaw<StronglyTypedOptions2>
                 {
                     Path = "strongly-typed-options-2",
@@ -44,7 +44,7 @@ namespace EfConfigurationProvider.Test
                 });
             postResponse.EnsureSuccessStatusCode();
 
-            HttpResponseMessage getResponse = await client.GetAsync("/strongly-typed-options-2");
+            HttpResponseMessage getResponse = await client.GetAsync("/api/__configuration/strongly-typed-options-2");
             StronglyTypedOptions2 data = await getResponse.Content.ReadAsAsync<StronglyTypedOptions2>();
             Assert.True(data.Flag);
             Assert.Equal(555, data.Value1);

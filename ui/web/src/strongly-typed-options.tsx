@@ -24,7 +24,7 @@ interface Props {
 }
 
 export function StronglyTypedOptions({ path, title }: Props) {
-  const url = `/${path}`;
+  const url = `/api/__configuration/${path}`;
   const { submit } = useActions(url);
   const { data, error, revalidate } = useSWR(url);
 

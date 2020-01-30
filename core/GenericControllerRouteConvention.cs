@@ -18,7 +18,7 @@ namespace EfConfigurationProvider.Core
                 {
                     controller.Selectors.Add(new SelectorModel
                     {
-                        AttributeRouteModel = new AttributeRouteModel(new RouteAttribute(customNameAttribute.Route)),
+                        AttributeRouteModel = new AttributeRouteModel(new RouteAttribute("api/__configuration/" + customNameAttribute.Route)),
                     });
                 }
             }
