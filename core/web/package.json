@@ -1,0 +1,71 @@
+{
+  "name": "glow-configuration",
+  "version": "0.1.0",
+  "private": false,
+  "files": [
+    "lib",
+    "es"
+  ],
+  "module": "./es/index.js",
+  "types": "./es/types.d.ts",
+  "scripts": {
+    "tsc": "tsc",
+    "watch": "tsc --watch",
+    "cleanbuild": "rm -r node_modules && npm install && tsc",
+    "prettier": "prettier --write src/**/*.* package.json",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "@aspnet/signalr": "1.1.4",
+    "react-query": "1.5.7"
+  },
+  "devDependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "formik-antd": "2.0.1",
+    "antd": "4.2.2",
+    "formik": "2.1.4",
+    "styled-components": "5.1.0",
+    "react-router-dom": "6.0.0-alpha.5",
+    "react-router": "6.0.0-alpha.5",
+    "typescript": "3.9.2",
+    "@types/jest": "24.0.18",
+    "@types/node": "14.0.1",
+    "@types/styled-components": "5.1.0",
+    "@types/react": "16.9.35",
+    "@types/react-dom": "16.9.8",
+    "prettier": "2.0.5",
+    "immer": "2.1.5",
+    "lodash": "4.17.15",
+    "@types/lodash": "4.14.141",
+    "@babel/core": "7.8.4",
+    "@storybook/addon-actions": "5.3.13",
+    "@storybook/addon-info": "5.3.13",
+    "@storybook/addon-links": "5.3.13",
+    "@storybook/addons": "5.3.13",
+    "@storybook/react": "5.3.13",
+    "use-lodash-debounce": "1.1.0",
+    "awesome-typescript-loader": "5.2.1",
+    "babel-loader": "8.0.6",
+    "eslint-config-prettier": "6.3.0",
+    "eslint-plugin-prettier": "3.1.1",
+    "semantic-release": "17.0.4",
+    "react-query": "1.5.7",
+    "dayjs": "1.8.19"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0 < 17",
+    "react-dom": ">= 16.8.0 < 17",
+    "antd": ">= 3.11.5",
+    "formik": ">= 2.0.3 < 3",
+    "lodash": ">= 4.17.11 < 5",
+    "styled-components": ">= 4.0.3 < 5",
+    "formik-antd": ">= 1.6.0",
+    "use-lodash-debounce": ">= 1.0.0 < 2",
+    "react-router-dom": ">= 6.0.0-alpha.2",
+    "react-router": ">= 6.0.0-alpha.2",
+    "dayjs": "1.8.19"
+  }
+}

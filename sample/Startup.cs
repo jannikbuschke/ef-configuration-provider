@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using EfConfigurationProvider.Core;
-using EfConfigurationProvider.Ui;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace EfConfigurationProvider.Sample
@@ -28,15 +30,31 @@ namespace EfConfigurationProvider.Sample
                     policy.RequireRole("Everyone");
                 });
             });
-            services.AddMvc();
-            services.AddEfConfiguration(options =>
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.Formatting = Formatting.Indented;
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
+
+            services.AddGlowConfiguration(
+                new[] { typeof(Startup).Assembly },
+                options =>
             {
                 //options.GlobalPolicy = "policy";
             });
-            services.AddEfConfigurationUi(new[] { GetType().Assembly });
 
             services.Configure<StronglyTypedOptions>(configuration.GetSection("strongly-typed-options"));
             services.Configure<StronglyTypedOptions2>(configuration.GetSection("strongly-typed-options-2"));
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "web/build";
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -47,17 +65,27 @@ namespace EfConfigurationProvider.Sample
             }
 
             app.UseMvc();
-            app.UseEfConfigurationUi();
+            //app.UseEfConfigurationUi();
 
-            if (env.IsDevelopment())
+            //if (env.IsDevelopment())
+            //{
+            //    app.Run(async (context) =>
+            //    {
+            //        IEnumerable<KeyValuePair<string, string>> data = configuration.AsEnumerable();
+
+            //        await context.Response.WriteAsync(JArray.FromObject(data).ToString());
+            //    });
+            //}
+
+            app.UseSpa(spa =>
             {
-                app.Run(async (context) =>
-                {
-                    IEnumerable<KeyValuePair<string, string>> data = configuration.AsEnumerable();
+                spa.Options.SourcePath = "web";
 
-                    await context.Response.WriteAsync(JArray.FromObject(data).ToString());
-                });
-            }
+                if (env.IsDevelopment())
+                {
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+                }
+            });
         }
     }
 }

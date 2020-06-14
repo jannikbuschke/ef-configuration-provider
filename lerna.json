@@ -1,0 +1,19 @@
+{
+  "packages": ["core/web", "sample/web"],
+  "version": "0.0.0",
+  "command": {
+    "bootstrap": {
+      "nohoist": [
+        "jest",
+        "jest-dom",
+        "@babel/core",
+        "babel-loader",
+        "@storybook/addon-actions",
+        "@storybook/addon-info",
+        "@storybook/addon-links",
+        "@storybook/addons",
+        "@storybook/react"
+      ]
+    }
+  }
+}

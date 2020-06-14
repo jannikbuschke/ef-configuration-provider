@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "name": "sample",
+      "path": "sample\\web"
+    },
+    {
+      "name": "module",
+      "path": "core\\web"
+    }
+  ],
+  "settings": {}
+}

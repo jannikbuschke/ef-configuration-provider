@@ -9,6 +9,7 @@ namespace EfConfigurationProvider.Ui
 {
     public static class ServiceExtensions
     {
+
         public static IServiceCollection AddEfConfigurationUi(this IServiceCollection services, IEnumerable<Assembly> assembliesToScan)
         {
             services.AddMvcCore(options =>
@@ -17,6 +18,7 @@ namespace EfConfigurationProvider.Ui
             }).ConfigureApplicationPartManager(m =>
                 m.FeatureProviders.Add(new GenericTypeControllerFeatureProvider(assembliesToScan)
             ));
+
             services.AddSingleton(new AssembliesCache(assembliesToScan));
 
             return services;

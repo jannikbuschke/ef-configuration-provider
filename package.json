@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "3.21.0"
+  },
+  "scripts": {
+    "first-start": "npm install && npm run bootstrap && npm run tsc && npm run start",
+    "bootstrap": "lerna bootstrap --hoist",
+    "start": "lerna run start --stream",
+    "watch": "lerna run watch --stream",
+    "tsc": "lerna run tsc --stream",
+    "lerna": "lerna"
+  }
+}

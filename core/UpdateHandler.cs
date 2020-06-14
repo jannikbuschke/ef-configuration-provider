@@ -13,7 +13,7 @@ namespace EfConfigurationProvider.Core
         public async Task<Unit> Handle(Update request, CancellationToken cancellationToken)
         {
             var builder = new DbContextOptionsBuilder<DataContext>();
-            EntityFrameworkExtensions.optionsAction(builder);
+            StartupExtensions.optionsAction(builder);
             using var ctx = new DataContext(builder.Options);
 
             var validator = new UpdateValidator();

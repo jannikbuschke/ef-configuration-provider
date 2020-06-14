@@ -29,6 +29,5 @@ namespace EfConfigurationProvider
         public string Foo { get; set; }
         public int Number { get; set; }
         public bool HelloWorld { get; set; }
-
     }
 }

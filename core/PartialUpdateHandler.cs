@@ -14,7 +14,7 @@ namespace EfConfigurationProvider
         public async Task<Unit> Handle(PartialUpdate request, CancellationToken cancellationToken)
         {
             var builder = new DbContextOptionsBuilder<DataContext>();
-            EntityFrameworkExtensions.optionsAction(builder);
+            StartupExtensions.optionsAction(builder);
             using var ctx = new DataContext(builder.Options);
 
             Configuration current = await ctx.Configurations.OrderByDescending(v => v.Created).FirstOrDefaultAsync();

@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "core", "core\core.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sample", "sample\sample.csproj", "{0A454D6E-C8C0-4046-ADFC-B13D9750C936}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ui", "ui\ui.csproj", "{25CDB9E8-CB11-4CCE-849A-644E4A3B5DC3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "meta", "meta\meta.csproj", "{29A39247-5297-43AF-BA75-0FEA46C1D051}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "core.sqlserver", "core.sqlserver\core.sqlserver.csproj", "{4658DB44-BDB6-4F94-B547-87645438125D}"
@@ -35,10 +33,6 @@ Global
 		{0A454D6E-C8C0-4046-ADFC-B13D9750C936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A454D6E-C8C0-4046-ADFC-B13D9750C936}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A454D6E-C8C0-4046-ADFC-B13D9750C936}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25CDB9E8-CB11-4CCE-849A-644E4A3B5DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25CDB9E8-CB11-4CCE-849A-644E4A3B5DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25CDB9E8-CB11-4CCE-849A-644E4A3B5DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25CDB9E8-CB11-4CCE-849A-644E4A3B5DC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29A39247-5297-43AF-BA75-0FEA46C1D051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{29A39247-5297-43AF-BA75-0FEA46C1D051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29A39247-5297-43AF-BA75-0FEA46C1D051}.Release|Any CPU.ActiveCfg = Release|Any CPU

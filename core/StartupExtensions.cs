@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,31 +38,59 @@ namespace EfConfigurationProvider.Core
         }
     }
 
-    public static class EntityFrameworkExtensions
+    public static class StartupExtensions
     {
         internal static Action<DbContextOptionsBuilder> optionsAction;
         public static IConfigurationBuilder AddEFConfiguration(
             this IConfigurationBuilder builder,
             Action<DbContextOptionsBuilder> optionsAction)
         {
-            EntityFrameworkExtensions.optionsAction = optionsAction;
+            StartupExtensions.optionsAction = optionsAction;
             return builder.Add(new ConfigurationSource(optionsAction));
         }
 
-        public static IServiceCollection AddEfConfiguration(this IServiceCollection services, Action<Options> configure)
+        public static IServiceCollection AddGlowConfiguration(this IServiceCollection services, IEnumerable<Assembly> assembliesToScan, Action<Options> configure)
         {
             var configuration = new Options();
             configure(configuration);
-            services.AddMediatR();
             services.AddSingleton(configuration);
             services.AddSingleton<AuthorizationService>();
             services.AddHttpContextAccessor();
+            services.AddMediatR(typeof(StartupExtensions));
+            services.AddSingleton<AssembliesCache>();
+
+            services.AddMvcCore(options =>
+            {
+                options.Conventions.Add(new GenericControllerRouteConvention());
+            }).ConfigureApplicationPartManager(manager =>
+                manager.FeatureProviders.Add(new GenericTypeControllerFeatureProvider(assembliesToScan)
+            ));
+
+            services.AddSingleton(new AssembliesCache(assembliesToScan));
+
             return services;
         }
 
-        public static IServiceCollection AddEfConfiguration(this IServiceCollection services)
-        {
-            return AddEfConfiguration(services, options => { });
-        }
+        //public static IServiceCollection AddEfConfiguration(this IServiceCollection services)
+        //{
+        //    return AddEfConfiguration(services, options => { });
+        //}
+
+        //public static IMvcBuilder AddEfConfiguration(this IMvcBuilder mvc, IEnumerable<Assembly> assembliesToScan)
+        //{
+        //    mvc.ConfigureApplicationPartManager(m =>
+        //    {
+        //        m.FeatureProviders.Add(new GenericTypeControllerFeatureProvider(assembliesToScan));
+        //    });
+
+        //    mvc.Services.AddMvcCore(options =>
+        //     {
+        //         options.Conventions.Add(new GenericControllerRouteConvention());
+        //     });
+
+        //    //services.AddSingleton(new AssembliesCache(assembliesToScan));
+
+        //    return mvc;
+        //}
     }
 }

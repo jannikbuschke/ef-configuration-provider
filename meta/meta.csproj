@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider</AssemblyName>
     <RootNamespace>EfConfigurationProvider</RootNamespace>
@@ -13,13 +13,11 @@
   <ItemGroup>
     <ProjectReference Include="..\core\core.csproj" PrivateAssets="all">
     </ProjectReference>
-    <ProjectReference Include="..\ui\ui.csproj" PrivateAssets="all">
-    </ProjectReference>
   </ItemGroup>
 
   <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
     <ItemGroup>
-      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
     </ItemGroup>
   </Target>
   
