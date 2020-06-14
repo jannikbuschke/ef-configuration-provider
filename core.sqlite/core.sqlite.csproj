@@ -5,7 +5,7 @@
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider.Core.Sqlite</AssemblyName>
     <RootNamespace>EfConfigurationProvider.Core.Sqlite</RootNamespace>
-    <Version>0.6.2</Version>
+    <Version>0.7.0</Version>
     <Authors>Jannik Buschke</Authors>
   </PropertyGroup>
 

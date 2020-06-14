@@ -5,7 +5,7 @@
     <LangVersion>8.0</LangVersion>
     <AssemblyName>EfConfigurationProvider</AssemblyName>
     <RootNamespace>EfConfigurationProvider</RootNamespace>
-    <Version>0.2.1</Version>
+    <Version>0.7.0</Version>
     <Authors>Jannik Buschke</Authors>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>

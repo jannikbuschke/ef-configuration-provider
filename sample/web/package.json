@@ -14,7 +14,7 @@
     "react-scripts": "3.4.1",
     "dayjs": "1.8.19",
     "lodash": "4.17.15",
-    "glow-configuration": "0.1.0",
+    "glow-configuration": "0.7.0",
     "react-query":"1.5.7"
   },
   "devDependencies": {
