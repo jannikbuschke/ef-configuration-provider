@@ -13,14 +13,40 @@ steps:
   displayName: 'npm install'
   inputs:
     command: 'install'
-    workingDir: './ui/web'
 
 - task: Npm@1
-  displayName: 'npm run build'
+  displayName: 'npm run bootstrap'
   inputs:
     command: 'custom'
-    customCommand: 'run build'
-    workingDir: './ui/web'
+    customCommand: 'run bootstrap'
+
+- task: Npm@1
+  displayName: 'npm run tsc'
+  inputs:
+    command: 'custom'
+    customCommand: 'run tsc'
+
+- task: Npm@1
+  displayName: 'npm publish beta (conditionally)'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'publish --tag beta'
+    publishEndpoint: npm
+    customEndpoint: npm
+    workingDir: './core/web'
+  continueOnError: true
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/beta'))
+
+- task: Npm@1
+  displayName: 'npm publish release (conditionally)'
+  inputs:
+    command: publish
+    verbose: false
+    publishEndpoint: npm
+    customEndpoint: npm
+    workingDir: './core/web'
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'))
 
 - task: PowerShell@2
   displayName: 'start mssqllocaldb'
@@ -47,7 +73,7 @@ steps:
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))
   inputs:
     command: 'pack'
-    packagesToPack: 'core/core.csproj;ui/ui.csproj;core.sqlite/core.sqlite.csproj;core.sqlserver/core.sqlserver.csproj'
+    packagesToPack: 'core/core.csproj;core.sqlite/core.sqlite.csproj;core.sqlserver/core.sqlserver.csproj'
     includesymbols: true
     includesource: true
 
