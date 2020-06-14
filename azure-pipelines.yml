@@ -46,6 +46,7 @@ steps:
     publishEndpoint: npm
     customEndpoint: npm
     workingDir: './core/web'
+  continueOnError: true
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'))
 
 - task: PowerShell@2
